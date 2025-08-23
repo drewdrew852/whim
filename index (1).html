@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Whimsical Wordplayer</title>
+  <style>
+    body {
+      font-family: monospace;
+      background:#111;
+      color:#eee;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      padding:20px;
+      margin: 0;
+    }
+    button {
+      margin:10px;
+      padding:12px 20px;
+      font-size:16px;
+      background:#333;
+      color:#fff;
+      border:none;
+      border-radius:6px;
+      cursor:pointer;
+      width: 90%;
+      max-width: 300px;
+    }
+    button:hover {
+      background:#555;
+    }
+    #result {
+      margin-top:30px;
+      font-size:18px;
+      font-weight:bold;
+      max-width: 95%;
+      text-align: center;
+      white-space: pre-line;
+    }
+    p.description {
+      max-width:95%;
+      text-align:center;
+      font-size:14px;
+      color:#bbb;
+      margin-top:10px;
+      line-height:1.4em;
+    }
+    p.example {
+      font-size:14px;
+      color:#999;
+      margin-top:6px;
+      font-style:italic;
+      text-align: center;
+    }
+    h1 {
+      font-size: 24px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Whimsical Wordplayer</h1>
+  <p class="description">
+    A creative spark generator for songwriting. It blends everyday and surreal objects with textured sound words 
+    that have a vivid mouthfeel, paired with moods that might not align in obvious ways. Use it as a playful 
+    launchpad for lyrics, imagery, or sonic direction.
+  </p>
+  <p class="example">Format: [object] + [sound/texture] + [mood]</p>
+
+  <div>
+    <button onclick="generate()">Generate 1</button>
+    <button onclick="generateFive()">Generate 5</button>
+  </div>
+
+  <div id="result"></div>
+
+  <script>
+    const objects = [
+      "dress", "mirror", "pillow", "bottle", "clock", "window", "flower", "train", "river", "candle",
+      "mask", "radio", "phone", "door", "glass", "hat", "shoe", "book", "key", "teacup",
+      "letter", "rose", "perfume", "waltz", "violin", "balcony", "champagne", "garden", "kiss", "silk",
+      "blush", "handkerchief", "poem", "lullaby", "bouquet", "heart", "embrace", "locket", "chandelier", "petal",
+      "catacomb", "gargoyle", "dagger", "banshee", "raven", "crypt", "veil", "phantom", "shadow", "tomb",
+      "statue", "hollow", "cauldron", "claw", "bone", "teeth", "flame", "serpent", "grimoire", "noose", "moon",
+      "robot", "drone", "neon", "antenna", "cyborg", "chip", "raygun", "console", "data shard", "satellite",
+      "signal", "laser", "circuit", "hovercraft", "holoscreen", "android", "scanner", "reactor", "portal", "drivesuit"
+    ];
+
+    const sounds = [
+      "knock","creak","slam","whirr","buzz","hum","crash","drip","snap","rustle",
+      "shatter","clink","groan","ping","echo","rattle","swish","whine","clatter","fizz",
+      "howl","thud","chirp","flutter","scrape","whistle","sigh","murmur","bang","tick",
+      "rumble","pop","splash","shriek","crackle","gurgle","hiss","clack","thump","scratch",
+      "tingle","warble","chant","plop","spark","sputter","throb","gasp","whip","drone"
+    ];
+
+    const moods = [
+      "longing","paranoia","ecstasy","nostalgia","rage","serenity","defiance","despair","euphoria","dread",
+      "yearning","confusion","awe","lust","melancholy","bliss","isolation","anticipation","warmth","tenderness",
+      "curiosity","restlessness","emptiness","devotion","tranquility","playfulness","grief","hope","obsession","reverence",
+      "whimsy","guilt","freedom","jealousy","resolve","mourning","glee","comfort","shame","excitement",
+      "rebellion","calm","wonder","submission","delight","fear","acceptance","pride","sorrow","ecstasy"
+    ];
+
+    function randomChoice(list) {
+      return list[Math.floor(Math.random() * list.length)];
+    }
+
+    function generate() {
+      const object = randomChoice(objects);
+      const sound = randomChoice(sounds);
+      const mood = randomChoice(moods);
+      document.getElementById("result").innerText = `${object} + ${sound} + ${mood}`;
+    }
+
+    function generateFive() {
+      let results = "";
+      for (let i = 0; i < 5; i++) {
+        const object = randomChoice(objects);
+        const sound = randomChoice(sounds);
+        const mood = randomChoice(moods);
+        results += `${object} + ${sound} + ${mood}
+`;
+      }
+      document.getElementById("result").innerText = results;
+    }
+  </script>
+</body>
+</html>
